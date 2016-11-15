@@ -1,14 +1,31 @@
-var path = require('path');
-
 module.exports = {
-	entry: './src/app.js',
-	output: {
-		path: './static/build',
-		filename: 'bundle.js'
-	},
-	resolve: {
-		root:[
-			path.resolve('./src')
-		]
-	}
-}
+  context: __dirname + "/app",
+
+  entry: {
+    javascript: "./js/app.js",
+    html: "./index.html"
+  },
+
+  output: {
+    filename: "bundle.js",
+    path: __dirname + "/dist",
+  },
+
+  resolve: {
+  	extensions: ['', '.js', '.json', '.jsx']
+  },
+
+  module: {
+  	loaders: [
+  		{
+  			test: /\.jsx?$/,
+  			exclude: /node_modules/,
+  			loaders: ["babel-loader"]
+  		},
+      {
+        test: /\.html$/,
+        loader: "file?name=[name].[ext]",
+      }
+  	]
+  }
+};
