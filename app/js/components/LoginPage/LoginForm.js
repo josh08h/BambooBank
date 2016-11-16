@@ -13,7 +13,7 @@ export default class Menu extends Component {
 
 	render(){
 		return (
-			<div>
+			<div style={style.formContainer}>
 				<h1>Login Page</h1>
 						<TextField
 							hintText="Email"

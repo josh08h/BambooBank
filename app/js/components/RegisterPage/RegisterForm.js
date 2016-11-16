@@ -15,7 +15,7 @@ export default class RegisterForm extends Component {
 
 	render(){
 		return (
-			<div>
+			<div style={style.formContainer}>
 				<h1>Registration Page</h1>
 						<TextField
 							hintText="Email"

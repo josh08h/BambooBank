@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LoginForm from '../components/LoginPage/LoginForm';
+import Paper from 'material-ui/Paper';
 import { loginUser } from '../actions/authentication';
-
+import style from '../styles/LoginContainer';
 class LoginContainer extends Component {
 	
 	componentWillUpdate(nextProps, nextState){
@@ -13,8 +14,12 @@ class LoginContainer extends Component {
 
 	render(){
 		return (
+			<div style={style.container}>
+				<Paper>
 					<LoginForm
 						loginUser={this.props.loginUser}/>
+				</Paper>
+			</div>
 			)
 	}
 }
