@@ -31,8 +31,8 @@ export const addUser =  (email, password) => {
 	    	email: email,
 	    	bambeuros: 100
 		  	})
-		  	.then((newUserData)=>{
-		  		dispatch(createUserSuccess(newUserData));
+		  	.then(()=>{
+		  		dispatch(createUserSuccess(userData));
 		  	})
 	   })
 	   .catch((err)=>{
@@ -67,12 +67,31 @@ const loginUserFailure = (err) => {
 	}
 }
 
+const getUserBalanceSuccess = (bal) => {
+	return {
+		type: 'GET_BALANCE_SUCCESS',
+		payload: {
+			bambeuros: bal
+		}
+	}
+}
+
+const getUserBalance = (user) => {
+	return (dispatch) => {
+		var userBalance  = firebase.database().ref('users/' + user.uid + '/bambeuros');
+		userBalance.on('value', function(snapshot) {
+		  dispatch(getUserBalanceSuccess(snapshot.val()))
+		});
+	}
+}
+
 export const loginUser = (email, password) => {
 	return (dispatch) => {
 		dispatch(loginUserRequest());
 		firebase.auth().signInWithEmailAndPassword(email, password)
 			.then((userData)=>{
 				dispatch(loginUserSuccess(userData))
+				dispatch(getUserBalance(userData))
 			})
 			.catch((err) =>{
 				dispatch(loginUserFailure(err))

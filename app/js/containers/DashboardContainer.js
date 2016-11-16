@@ -14,7 +14,7 @@ class DashboardContainer extends Component {
 			<Paper zDepth={1}>
 					<div style={style.container}>
 						<LogoutButtonComponent logoutUser={this.props.logoutUser} />
-						<InfobarComponent uid={this.props.user}/>
+						<InfobarComponent uid={this.props.uid} bambeuros={this.props.bambeuros}/>
 					</div>
 					<div>
 						<TransferBodyComponent />
@@ -26,7 +26,8 @@ class DashboardContainer extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		user: state.user.id
+		uid: state.user.id,
+		bambeuros: state.user.bambeuros
 	};
 };
 

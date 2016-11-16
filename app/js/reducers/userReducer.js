@@ -3,7 +3,6 @@ const INITIAL_STATE = {
 	status: null,
 	loading: false,
 	error: null,
-	emal: null,
 	bambeuros: null
 };
 
@@ -24,7 +23,6 @@ const userReducer = (state=INITIAL_STATE, action) => {
 				loading: false,
 				error: null,
 				id: action.payload.user,
-				email: action.payload.email,
 				bambeuros: action.payload.bambeuros
 			};
 		case 'CREATE_USER_FAILURE':
@@ -66,6 +64,11 @@ const userReducer = (state=INITIAL_STATE, action) => {
 				status: null,
 				loading: false,
 				error: null
+			}
+		case 'GET_BALANCE_SUCCESS':
+			return {
+				...state,
+				bambeuros: action.payload.bambeuros
 			}
 		default:
 			return state;
