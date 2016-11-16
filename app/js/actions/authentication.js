@@ -60,7 +60,7 @@ const loginUserSuccess = (user) => {
 
 const loginUserFailure = (err) => {
 	return {
-		type: 'LOGIN_FAILURE',
+		type: 'LOGIN_USER_FAILURE',
 		payload: {
 			error: err.message
 		}
@@ -102,7 +102,7 @@ export const loginUser = (email, password) => {
 
 const logoutUserFailure = () => {
 	return {
-		type: 'LOGOUT_FAILURE',
+		type: 'LOGOUT_USER_FAILURE',
 		payload: {
 			error: err.message
 		}

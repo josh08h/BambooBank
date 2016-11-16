@@ -21,7 +21,10 @@ export default class UsernameSelectField extends Component {
     value: 1
   };
 
-  handleChange = (event, index, value) => this.setState({value});
+  handleChange = (event, index, value) => {
+    this.setState({value});
+    this.props.onRecipientChange(value)
+  };
 
   createSelectItems(){
     let items = [];

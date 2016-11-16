@@ -7,7 +7,10 @@ export default class BambeuroSelectField extends Component {
     value: 1,
   };
 
-  handleChange = (event, index, value) => this.setState({value});
+  handleChange = (event, index, value) => {
+    this.setState({value});
+    this.props.onAmountChange(value);
+  };
 
   render() {
     return (
@@ -17,11 +20,11 @@ export default class BambeuroSelectField extends Component {
           value={this.state.value}
           onChange={this.handleChange}
         >
-          <MenuItem value={1} primaryText="B.5" />
-          <MenuItem value={2} primaryText="B.10" />
-          <MenuItem value={3} primaryText="B.20" />
-          <MenuItem value={4} primaryText="B.50" />
-          <MenuItem value={5} primaryText="B.100" />
+          <MenuItem value={5} primaryText="B.5" />
+          <MenuItem value={10} primaryText="B.10" />
+          <MenuItem value={20} primaryText="B.20" />
+          <MenuItem value={50} primaryText="B.50" />
+          <MenuItem value={100} primaryText="B.100" />
         </SelectField>
       </div>
     );

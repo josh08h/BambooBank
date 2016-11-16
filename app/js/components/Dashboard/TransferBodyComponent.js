@@ -7,18 +7,42 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 
 export default class TransferBodyComponent extends Component {
-	handleTransfer(value, amount){
+	constructor(props){
+		super(props);
+		this.state = {
+			recipient: null,
+			amount: null
+		}
+	}
 
+	handleRecipientChange(recipient){
+		this.setState({
+			recipient
+		})
+	}
+
+	handleAmountChange(amount){
+		this.setState({
+			amount
+		})
+	}
+
+	handleTransfer(amount, recipient){
+		alert(amount)
+		alert(recipient)
 	}
 
 	render(){
 		return (
 				<Paper zDepth={1}>
-					<BambeuroSelectField />
+					<BambeuroSelectField
+						onAmountChange={(amount)=>this.handleAmountChange(amount)}/>
 					<UsernameSelectField 
 						getUsernames={this.props.getUsernames}
+						onRecipientChange={(recipient)=>this.handleRecipientChange(recipient)}
 					/>
-					<RaisedButton label='Confirm'/>
+					<RaisedButton label='Confirm'
+						onClick={()=>this.handleTransfer(this.state.amount, this.state.recipient)}/>
 				</Paper>
 			)
 	}
