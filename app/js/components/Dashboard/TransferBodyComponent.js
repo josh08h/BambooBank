@@ -27,9 +27,11 @@ export default class TransferBodyComponent extends Component {
 		})
 	}
 
-	handleTransfer(amount, recipient){
-		alert(amount)
-		alert(recipient)
+	handleTransferFunds(amount, recipient){
+		
+		//validation here
+
+		this.props.transferFunds(amount, recipient)
 	}
 
 	render(){
@@ -42,7 +44,7 @@ export default class TransferBodyComponent extends Component {
 						onRecipientChange={(recipient)=>this.handleRecipientChange(recipient)}
 					/>
 					<RaisedButton label='Confirm'
-						onClick={()=>this.handleTransfer(this.state.amount, this.state.recipient)}/>
+						onClick={()=>this.handleTransferFunds(this.state.amount, this.state.recipient)}/>
 				</Paper>
 			)
 	}

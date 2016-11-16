@@ -70,6 +70,11 @@ const userReducer = (state=INITIAL_STATE, action) => {
 				...state,
 				bambeuros: action.payload.bambeuros
 			}
+		case 'DEDUCT_FUNDS':
+			return {
+				...state,
+				bambeuros: state.bambeuros - action.payload.amount
+			}
 		default:
 			return state;
 	}

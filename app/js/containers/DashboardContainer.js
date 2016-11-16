@@ -7,8 +7,7 @@ import TransferBodyComponent from '../components/Dashboard/TransferBodyComponent
 import { logoutUser } from '../actions/authentication';
 import Paper from 'material-ui/Paper';
 import style from '../styles/DashboardContainer';
-import {getUsernames} from '../actions/transactions'
-
+import {getUsernames, transferFunds} from '../actions/transactions'
 
 class DashboardContainer extends Component {
 	render(){
@@ -25,7 +24,8 @@ class DashboardContainer extends Component {
 					</div>
 					<div>
 						<TransferBodyComponent 
-							getUsernames={this.props.getUsernames}/>
+							getUsernames={this.props.getUsernames}
+							transferFunds={this.props.transferFunds}/>
 					</div>
 			</Paper>
 			)
@@ -43,7 +43,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		addUser: (email, password) => dispatch(addUser(email, password)),
 		logoutUser: ()=> dispatch(logoutUser()),
-		getUsernames: ()=> dispatch(getUsernames())
+		getUsernames: ()=> dispatch(getUsernames()),
+		transferFunds: (amount, recipient) => dispatch(transferFunds(amount, recipient))
 	}
 }
 
