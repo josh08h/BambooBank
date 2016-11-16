@@ -5,15 +5,21 @@ import LogoutButtonComponent from '../components/Common/LogoutButtonComponent';
 import InfobarComponent from '../components/Dashboard/InfobarComponent';
 import TransferBodyComponent from '../components/Dashboard/TransferBodyComponent';
 import { logoutUser } from '../actions/authentication';
-
+import Paper from 'material-ui/Paper';
+import style from '../styles/DashboardContainer';
 
 class DashboardContainer extends Component {
 	render(){
 		return (
-					<div>
+			<Paper zDepth={1}>
+					<div style={style.container}>
 						<LogoutButtonComponent logoutUser={this.props.logoutUser} />
-
+						<InfobarComponent uid={this.props.user}/>
 					</div>
+					<div>
+						<TransferBodyComponent />
+					</div>
+			</Paper>
 			)
 	}
 }

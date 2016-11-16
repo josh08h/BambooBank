@@ -2,7 +2,9 @@ const INITIAL_STATE = {
 	id: null,
 	status: null,
 	loading: false,
-	error: null
+	error: null,
+	emal: null,
+	bambeuros: null
 };
 
 const userReducer = (state=INITIAL_STATE, action) => {
@@ -21,7 +23,9 @@ const userReducer = (state=INITIAL_STATE, action) => {
 				status: 'Success: User created',
 				loading: false,
 				error: null,
-				id: action.payload.user
+				id: action.payload.user,
+				email: action.payload.email,
+				bambeuros: action.payload.bambeuros
 			};
 		case 'CREATE_USER_FAILURE':
 			return {

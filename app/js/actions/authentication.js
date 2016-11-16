@@ -27,11 +27,17 @@ export const addUser =  (email, password) => {
 		dispatch(createUser());
 		firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userData)=>{
-     dispatch(createUserSuccess(userData));
-    })
-    .catch((err)=>{
-     dispatch(createUserFailure(err))
-    });
+	    	firebase.database().ref('users/' + userData.uid).set({
+	    	email: email,
+	    	bambeuros: 100
+		  	})
+		  	.then((newUserData)=>{
+		  		dispatch(createUserSuccess(newUserData));
+		  	})
+	   })
+	   .catch((err)=>{
+	     dispatch(createUserFailure(err))
+	   });
 	}
 }
 
@@ -45,7 +51,9 @@ const loginUserSuccess = (user) => {
 	return {
 		type: 'LOGIN_USER_SUCCESS',
 		payload: {
-			user: user.uid
+			user: user.uid,
+			email: user.email,
+			bambeuros: user.bambeuros
 		}
 	}
 }
